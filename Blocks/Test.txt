@@ -1,0 +1,58 @@
+public class Test {
+    
+    public static void main(String[] args) {
+        
+        A a1 = new A();
+        A a2 = new A("Hello A");        
+        A a3 = new A(40);
+        
+        A.x = 100;
+        a1.y = 200;
+        
+        A ax = new A();
+    }
+    
+}
+
+
+class A{
+    
+    static int x;
+    int y;
+    
+    static{
+       System.out.println("Execute static block 1");
+   }
+
+   static {
+       x = 50;
+       System.out.println("Execute static block 2.Print:" + x);
+       
+   } 
+   
+    
+    {
+        System.out.println("Execute empty block 1");
+    }
+    
+    {
+        y = 20;
+        System.out.println("Execute empty block 2.Print: "+y);
+    }
+    
+    
+    
+    
+    A(){
+        System.out.println("Execute default constructor.");
+    }
+    
+    A(int a){
+        System.out.println("Execute int constructor.Print: "+a);
+    }
+    
+    A(String s){
+        System.out.println("Execute string constructor.Print: "+s);
+    }
+        
+}
