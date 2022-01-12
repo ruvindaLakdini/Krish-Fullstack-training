@@ -1,0 +1,98 @@
+import java.util.Scanner;
+
+class Freddy {
+
+    int JumpDistance_in_one_round = 9;
+
+    double time_to_jump_one_round = 3;
+
+    double rest_time = 3.5;
+
+    
+    int distance;
+
+    int countable;
+
+    int no_of_jumps;
+
+    int calculable_distance;
+
+    int remains;
+
+    double calculable_rest_time;
+
+    int correct_no_of_jumps;
+
+    Double total_jump_time;
+
+    public void method() {
+        
+
+        Scanner s = new Scanner(System.in);
+        System.out.println("How long Freddy should jump in meters(m): ");
+        String string_distance = s.nextLine();
+
+        distance = Integer.parseInt(string_distance);
+
+        countable = distance % JumpDistance_in_one_round;
+
+        no_of_jumps = distance / JumpDistance_in_one_round;
+
+        correct_no_of_jumps = no_of_jumps * 3;
+
+        calculable_distance = no_of_jumps * JumpDistance_in_one_round;
+
+        remains = distance - calculable_distance;
+
+        calculable_rest_time = (no_of_jumps - 1) * 3.5;
+
+        total_jump_time = (double) (calculable_rest_time + (time_to_jump_one_round * no_of_jumps));
+
+        if (countable >= 5) {
+            System.out.println("in1");
+            correct_no_of_jumps += 1;
+            remains = remains - 5;
+            total_jump_time += 3.5;
+
+            if (remains >= 3) {
+                System.out.println("in2");
+                correct_no_of_jumps += 1;
+                remains = remains - 3;
+                total_jump_time += 2;
+
+                if (remains >= 1) {
+                    System.out.println("in3");
+                    correct_no_of_jumps += 1;
+                    remains = remains - 1;
+                    total_jump_time += 1;
+                }
+
+            }
+
+        }
+
+        if (no_of_jumps == 1) {
+            System.out.println("in4");
+            time_to_jump_one_round = 3;
+
+        }
+
+        System.out.println("Number of jumps Freddy takes to jump " + distance + "m :" + String.valueOf(correct_no_of_jumps));
+
+        System.out.println("Time Freddy takes to jump " + distance + "m :" + String.valueOf(total_jump_time));
+
+        s.close();
+
+    }
+
+}
+
+class FreddyTest {
+
+    public static void main(String[] args) {
+
+        Freddy f = new Freddy();
+        f.method();
+    }
+
+}
